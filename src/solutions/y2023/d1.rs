@@ -9,7 +9,7 @@ pub fn solve() {
         fs::read_to_string(FILE_PATH).expect("Should have been able to read the file.");
 
     let mut total: i32 = 0;
-    for line in contents.split("\n") {
+    for line in contents.lines() {
         if PART_TWO {
             total += get_first_and_last(&dumb_replace(&line));
         } else {
