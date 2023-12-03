@@ -1,6 +1,5 @@
 use std::fs;
 
-
 pub fn solve() {
     const FILE_PATH: &str = "./files/y2023/d01/input.txt";
     const PART_TWO: bool = true;
@@ -16,22 +15,23 @@ pub fn solve() {
             total += get_first_and_last(&line);
         }
     }
-    
+
     dbg!(total);
 }
 
-
 fn get_first_and_last(s: &str) -> i32 {
-    let integers: Vec<i32> = s.chars()
+    let integers: Vec<i32> = s
+        .chars()
         .filter(|&c| c.is_numeric())
         .map(|c| c.to_digit(10).unwrap() as i32)
         .collect();
 
     if integers.len() == 0 {
-        return 0
+        return 0;
     }
 
-    [integers[0], integers[integers.len() - 1]].iter()
+    [integers[0], integers[integers.len() - 1]]
+        .iter()
         .map(|&digit| digit.to_string())
         .collect::<String>()
         .parse()

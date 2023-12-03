@@ -2,7 +2,6 @@ use std::env;
 
 mod solutions;
 
-
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -10,15 +9,14 @@ fn main() {
         println!("Usage: {} <day>", args[0])
     }
 
-    const YEAR: i32 = 2023;   // always 2023 for now
+    const YEAR: i32 = 2023; // always 2023 for now
     let day: i32 = args[1].parse().expect("Invalid day");
     assert!(day <= 31);
-    
+
     run_solution(YEAR, day);
 }
 
-
-fn run_solution(year: i32, day:i32) {
+fn run_solution(year: i32, day: i32) {
     match (year, day) {
         (2023, 1) => solutions::y2023::d1::solve(),
         (2023, 2) => solutions::y2023::d2::solve(),
@@ -44,6 +42,6 @@ fn run_solution(year: i32, day:i32) {
         (2023, 22) => solutions::y2023::d22::solve(),
         (2023, 23) => solutions::y2023::d23::solve(),
         (2023, 24) => solutions::y2023::d24::solve(),
-        _ => println!("No solution found for {}-12-{}", year, day)
-    }    
+        _ => println!("No solution found for {}-12-{}", year, day),
+    }
 }

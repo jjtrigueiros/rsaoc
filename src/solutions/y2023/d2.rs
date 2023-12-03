@@ -5,31 +5,41 @@ pub fn solve() {
 
     let contents: String =
         fs::read_to_string(FILE_PATH).expect("Should have been able to read the file.");
-    
+
     let mut solution_part1 = 0;
     let mut solution_part2 = 0;
 
     for line in contents.lines() {
-        if line.is_empty() { continue; }
+        if line.is_empty() {
+            continue;
+        }
 
-        let game_id: i32 = line.split(": ").next().unwrap()
+        let game_id: i32 = line
+            .split(": ")
+            .next()
+            .unwrap()
             .chars()
             .skip_while(|c| !c.is_digit(10))
             .take_while(|c| c.is_digit(10))
-            .collect::<String>().parse().unwrap();
-        
+            .collect::<String>()
+            .parse()
+            .unwrap();
+
         let rounds = line.split(": ").last().unwrap().split("; ");
 
         let mut max_red_value = 0;
         let mut max_green_value = 0;
         let mut max_blue_value = 0;
 
-        
         for round in rounds {
             let color_values = round.split(", ");
             for color_value in color_values {
-                let color_number: i32 = color_value.chars()
-                    .take_while(|c| c.is_digit(10)).collect::<String>().parse().unwrap();
+                let color_number: i32 = color_value
+                    .chars()
+                    .take_while(|c| c.is_digit(10))
+                    .collect::<String>()
+                    .parse()
+                    .unwrap();
                 if color_value.contains("red") {
                     max_red_value = max_red_value.max(color_number)
                 } else if color_value.contains("blue") {
@@ -38,7 +48,6 @@ pub fn solve() {
                     max_green_value = max_green_value.max(color_number)
                 }
             }
-            
         }
 
         // calculate if game is valid for part 1 criteria (12 red, 13 green, 14 blue in bag)
