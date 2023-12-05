@@ -6,7 +6,8 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
-        println!("Usage: {} <day>", args[0])
+        println!("Usage: {} <day>", args[0]);
+        return
     }
 
     const YEAR: i32 = 2023; // always 2023 for now
